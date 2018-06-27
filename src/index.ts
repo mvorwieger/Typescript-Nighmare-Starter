@@ -1,8 +1,14 @@
-export class C {
-    private x = 10
-    getX = () => this.x;
-    setX = (newVal: number) => { this.x = newVal; }
-}
+const Nightmare = require('nightmare')
+const nightmare = Nightmare({ show: true })
 
-export let x = new C();
-export let y = { ...{ some: "value" } }
+nightmare
+    .goto('https://duckduckgo.com')
+    .type('#search_form_input_homepage', 'github nightmare')
+    .click('#search_button_homepage')
+    .wait('#r1-0 a.result__a')
+    .evaluate(() => console.log("got here"))
+    .end()
+    .then(console.log)
+    .catch((error: Error) => {
+        console.error(error)
+    })
