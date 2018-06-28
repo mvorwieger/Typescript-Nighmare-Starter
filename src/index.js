@@ -6,9 +6,9 @@ nightmare
     .type('#search_form_input_homepage', 'github nightmare')
     .click('#search_button_homepage')
     .wait('#r1-0 a.result__a')
-    .evaluate(() => console.log("got here"))
+    .evaluate(() => document.querySelector('#links .result__a').href)
     .end()
     .then(console.log)
-    .catch((error: Error) => {
+    .catch((error) => {
         console.error(error)
     })
